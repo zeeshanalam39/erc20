@@ -22,6 +22,11 @@ contract ExplorerToken is ERC20Capped {
         _mint(account, amount * (10 ** decimals()));
     }
 
+    function transfer(address to, uint256 amount) public virtual override returns (bool) {
+        _transfer(owner, to, amount * (10 ** decimals()));
+        return true;
+    }
+
     // function _mint(
     //     address account,
     //     uint256 amount
