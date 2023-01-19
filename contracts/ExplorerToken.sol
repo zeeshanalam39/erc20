@@ -22,8 +22,13 @@ contract ExplorerToken is ERC20Capped {
         _mint(account, amount * (10 ** decimals()));
     }
 
-    function transfer(address to, uint256 amount) public virtual override returns (bool) {
-        _transfer(owner, to, amount * (10 ** decimals()));
+    function transfer(
+        address to,
+        uint256 amount
+    ) public virtual override returns (bool) {
+        // _transfer(owner, to, amount * (10 ** decimals()));
+        _transfer(owner, to, amount);
+
         return true;
     }
 
@@ -41,7 +46,7 @@ contract ExplorerToken is ERC20Capped {
     // function burn(address account, uint256 amount) public virtual onlyOwner {}
 
     modifier onlyOwner() {
-        require(msg.sender == owner, "Only owner can call this function.");
+        require(msg.sender == owner, "Onlyy owner can call this function.");
         _;
     }
 }
